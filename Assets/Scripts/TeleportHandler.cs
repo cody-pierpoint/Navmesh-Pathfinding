@@ -6,6 +6,7 @@ public class TeleportHandler : MonoBehaviour
 {
     [SerializeField] NavMeshAgent teleportAgent;
     [SerializeField] Transform teleportGoal;
+    [SerializeField] private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,10 @@ public class TeleportHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         teleportAgent.SetDestination(teleportGoal.transform.position);
+
+        animator.SetBool("IsCrawling", !teleportAgent.pathPending);
+
     }
 }

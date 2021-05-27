@@ -7,7 +7,7 @@ public class HumanoidMovement : MonoBehaviour
 {
     [SerializeField] NavMeshAgent humanAgent;
     [SerializeField] Transform humanGoal;
-    public ThirdPersonCharacter character;
+    [SerializeField] private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,9 @@ public class HumanoidMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        humanAgent.SetDestination(humanGoal.transform.position);      
+        humanAgent.SetDestination(humanGoal.transform.position);
+
+        animator.SetBool("WhyAreYouRunning", !humanAgent.pathPending);
     }
 
 
